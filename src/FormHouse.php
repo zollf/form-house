@@ -66,6 +66,12 @@ class FormHouse extends Plugin
             UrlManager::EVENT_REGISTER_CP_URL_RULES,
             function (RegisterUrlRulesEvent $event) {
                 $event->rules['form-house'] = 'form-house/forms';
+                $event->rules['form-house/forms'] = 'form-house/forms';
+
+                $event->rules['form-house/fields'] = 'form-house/fields';
+
+                $event->rules['form-house/submissions'] = 'form-house/submissions';
+
             }
         );
     }
@@ -77,6 +83,7 @@ class FormHouse extends Plugin
             'forms' => ['label' => 'Forms', 'url' => 'form-house/'],
             'fields' => ['label' => 'Fields', 'url' => 'form-house/fields'],
             'submissions' => ['label' => 'Submissions', 'url' => 'form-house/submissions'],
+            'settings' => ['label' => 'Settings', 'url' => 'settings/plugins/form-house'],
         ];
 
         return $item;
