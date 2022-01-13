@@ -1,11 +1,14 @@
 {% extends '_layouts/cp' %}
 {% import '_includes/forms' as forms %}
 
+{% do view.registerAssetBundle("formhouse\\formhouse\\resources\\fields\\FieldsAsset") %}
+
 {% set title = 'Form House - Fields' %}
 {% set selectedSubnavItem = 'fields' %}
 
 
 {% set content %}
 <h1>Hello world</h1>
+<div id="react-fields"></div>
 {% endset %}
 

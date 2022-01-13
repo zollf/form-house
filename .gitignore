@@ -1,2 +1,11 @@
+# default
 .DS_Store
+
+# php
 vendor/
+
+# javascript/node
+node_modules
+*.bundle.js*
+.swc
+coverage

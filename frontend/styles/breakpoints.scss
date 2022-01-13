@@ -1,0 +1,129 @@
+$tinyPhoneWidth: 360px !default;
+$smallPhoneWidth: 480px !default;
+$mobileWidth: 768px !default;
+$mediumWidth: 992px !default;
+$tabletWidth: 1024px !default;
+$desktop: 1200px !default;
+$largeDesktopWidth: 1464 !default;
+
+/* Helper mixins, mainly for internal use */
+@mixin breakpoint($size, $type: max-width, $offset: 0) {
+  @media (#{$type}: calc(#{$size} - #{$offset})) {
+    @content;
+  }
+}
+
+@mixin max-width-breakpoint($size, $offset: 0) {
+  @include breakpoint($size, max-width, $offset) {
+    @content;
+  }
+}
+
+@mixin min-width-breakpoint($size, $offset: 0) {
+  @include breakpoint($size, min-width, $offset) {
+    @content;
+  }
+}
+
+@mixin constrained-breakpoint($type: width, $minSize: 0, $minOffset: 0, $maxSize: 0, $maxOffset: 0) {
+  @media (min-#{$type}: calc(#{$minSize} - #{$minOffset})) and (max-#{$type}: calc(#{$maxSize} - #{$maxOffset})) {
+    @content;
+  }
+}
+
+/* Mixins to be used by the app */
+@mixin tiny-phone {
+  @include max-width-breakpoint($tinyPhoneWidth) {
+    @content;
+  }
+}
+
+@mixin small-phone {
+  @include max-width-breakpoint($smallPhoneWidth) {
+    @content;
+  }
+}
+
+@mixin lt-mobile {
+  @include max-width-breakpoint($mobileWidth, 1) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include max-width-breakpoint($mobileWidth) {
+    @content;
+  }
+}
+
+@mixin gte-mobile {
+  @include min-width-breakpoint($mobileWidth) {
+    @content;
+  }
+}
+
+@mixin gt-mobile {
+  @include min-width-breakpoint($mobileWidth, -1) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include constrained-breakpoint(width, $mobileWidth, -1, $tabletWidth) {
+    @content;
+  }
+}
+
+@mixin lt-desktop {
+  @include max-width-breakpoint($tabletWidth) {
+    @content;
+  }
+}
+
+@mixin lt-medium {
+  @include max-width-breakpoint($mediumWidth, 1) {
+    @content;
+  }
+}
+
+@mixin lte-medium {
+  @include max-width-breakpoint($mediumWidth) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @include min-width-breakpoint($mediumWidth) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include min-width-breakpoint($tabletWidth, -1) {
+    @content;
+  }
+}
+
+@mixin lt-large-desktop {
+  @include max-width-breakpoint($desktop) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @include min-width-breakpoint($desktop) {
+    @content;
+  }
+}
+
+@mixin lt-xl-desktop {
+  @include max-width-breakpoint($largeDesktopWidth) {
+    @content;
+  }
+}
+
+@mixin xl-desktop {
+  @include min-width-breakpoint($largeDesktopWidth, -1) {
+    @content;
+  }
+}
