@@ -38,11 +38,10 @@ class Install extends Migration
     private function dropTables()
     {
         // Delete tables with foreign key constraints first
-        $this->dropTableIfExists(SubmissionRecord::tableName());
         $this->dropTableIfExists(FormDataRecord::tableName());
         $this->dropTableIfExists(FormFieldRecord::tableName());
-
         $this->dropTableIfExists(FieldRecord::tableName());
+        $this->dropTableIfExists(SubmissionRecord::tableName());
         $this->dropTableIfExists(FormRecord::tableName());
     }
 
@@ -121,7 +120,7 @@ class Install extends Migration
     {
         // One submission belongs to a one form
         $this->addForeignKey(
-            'submissions__form_fk',
+            'formhouse__submissions__form_fk',
             SubmissionRecord::tableName(),
             'form_fk',
             FormRecord::tableName(),
@@ -130,7 +129,7 @@ class Install extends Migration
 
         // Many form data belongs to one submission
         $this->addForeignKey(
-            'form_data__submission_fk',
+            'formhouse__form_data__submission_fk',
             FormDataRecord::tableName(),
             'submission_fk',
             SubmissionRecord::tableName(),
@@ -139,7 +138,7 @@ class Install extends Migration
 
         // One form data belongs to one field in a form
         $this->addForeignKey(
-            'form_data__form_field_fk',
+            'formhouse__form_data__form_field_fk',
             FormDataRecord::tableName(),
             'form_field_fk',
             FormFieldRecord::tableName(),
@@ -148,14 +147,14 @@ class Install extends Migration
 
         // Many fields belong to many forms (MANY-TO-MANY)
         $this->addForeignKey(
-            'form_field__field_fk',
+            'formhouse__form_field__field_fk',
             FormFieldRecord::tableName(),
             'field_fk',
             FieldRecord::tableName(),
             'id',
         );
         $this->addForeignKey(
-            'form_field__form_fk',
+            'formhouse__form_field__form_fk',
             FormFieldRecord::tableName(),
             'form_fk',
             FormRecord::tableName(),
