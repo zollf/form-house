@@ -1,0 +1,44 @@
+{
+    "name": "form-house/form-house",
+    "description": "An intermediate place to store data before shipped off again.",
+    "type": "craft-plugin",
+    "version": "0.0.1",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "form-house"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dylan Kennedy",
+            "homepage": "https://github.com/zollf/form-house"
+        },
+        {
+            "name": "Jake Helfrich",
+            "homepage": "https://github.com/zollf/better-house"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "require-dev": {
+        "craftcms/cms": "^3.2.0",
+        "codeception/codeception": "^3.0",
+        "vlucas/phpdotenv": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "formhouse\\formhouse\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Form House",
+        "handle": "form-house",
+        "developer": "Dylan Kennedy, Jake Helfrich",
+        "developerUrl": "https://github.com/zollf/form-house",
+        "class": "formhouse\\formhouse\\FormHouse"
+    }
+}
