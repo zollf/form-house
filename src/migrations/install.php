@@ -53,7 +53,7 @@ class Install extends Migration
             [
                 'title' =>  $this->string()->notNull(),
                 'slug' => $this->string()->unique()->notNull(),
-                'type' => $this->string()->notNull(),
+                'type' => $this->integer()->notNull(),
             ]
         ));
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bb91e288fa0a407377a36f9d757ec0f",
+    "content-hash": "414e2a2523e61a1c0f129ec7dbb9c295",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -5354,6 +5354,59 @@
                 "source": "https://github.com/webonyx/graphql-php/tree/0.12.x"
             },
             "time": "2018-09-02T14:59:54+00:00"
+        },
+        {
+            "name": "yii2mod/yii2-enum",
+            "version": "1.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yii2mod/yii2-enum.git",
+                "reference": "7af030e19636ece5fd0adb5d6012d2b03fa63895"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yii2mod/yii2-enum/zipball/7af030e19636ece5fd0adb5d6012d2b03fa63895",
+                "reference": "7af030e19636ece5fd0adb5d6012d2b03fa63895",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6",
+                "yiisoft/yii2": "*"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~2.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yii2mod\\enum\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dmitry Semenov",
+                    "email": "disemx@gmail.com"
+                },
+                {
+                    "name": "Igor Chepurnoi",
+                    "email": "igorzfort@gmail.com"
+                }
+            ],
+            "description": "Yii2 Enumerable helpers",
+            "keywords": [
+                "enumerable helper",
+                "yii2",
+                "yii2 enum"
+            ],
+            "support": {
+                "issues": "https://github.com/yii2mod/yii2-enum/issues",
+                "source": "https://github.com/yii2mod/yii2-enum/tree/master"
+            },
+            "time": "2017-04-19T22:06:46+00:00"
         },
         {
             "name": "yii2tech/ar-softdelete",
