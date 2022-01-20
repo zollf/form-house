@@ -58,6 +58,7 @@ class FormHouse extends Plugin
             UrlManager::EVENT_REGISTER_SITE_URL_RULES,
             function (RegisterUrlRulesEvent $event) {
                 // $event->rules['siteActionTrigger1'] = 'form-house/forms';
+                $event->rules['form-house/fields/create'] = 'form-house/fields/create';
             }
         );
 
@@ -71,7 +72,6 @@ class FormHouse extends Plugin
                 $event->rules['form-house/fields'] = 'form-house/fields';
 
                 $event->rules['form-house/submissions'] = 'form-house/submissions';
-
             }
         );
     }

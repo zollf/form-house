@@ -54,6 +54,7 @@ class Install extends Migration
                 'title' =>  $this->string()->notNull(),
                 'slug' => $this->string()->unique()->notNull(),
                 'type' => $this->integer()->notNull(),
+                'required' => $this->boolean()->notNull(),
             ]
         ));
 
@@ -110,7 +111,7 @@ class Install extends Migration
         // Forms: Make slug unique
         $this->createIndex(
             $this->db->getIndexName(FormRecord::tableName(), 'slug', true),
-            FieldRecord::tableName(),
+            FormRecord::tableName(),
             'slug',
             true,
         );
