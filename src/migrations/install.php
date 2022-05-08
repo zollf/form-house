@@ -8,6 +8,7 @@ use formhouse\formhouse\records\FormDataRecord;
 use formhouse\formhouse\helpers\MigrationHelper;
 use formhouse\formhouse\records\FormFieldRecord;
 use formhouse\formhouse\records\SubmissionRecord;
+use craft\helpers\MigrationHelper as CraftMigrationHelper;
 
 use craft\db\Migration;
 
@@ -31,6 +32,7 @@ class Install extends Migration
      */
     public function safeDown()
     {
+        $this->deleteForeignKeys();
         $this->dropTables();
         return true;
     }
@@ -63,8 +65,9 @@ class Install extends Migration
             [
                 'title' => $this->string()->notNull(),
                 'slug' => $this->string()->unique()->notNull(),
-                'site_id' => $this->integer(),
-                'propagation_type' => $this->integer(),
+                'siteId' => $this->integer()->notNull(),
+                'author' => $this->integer()->notNull(),
+                'propagationType' => $this->integer(),
             ]
         ));
 
@@ -72,8 +75,8 @@ class Install extends Migration
         $this->createTable(FormFieldRecord::tableName(), array_merge(
             MigrationHelper::baseFields($this),
             [
-                'field_fk' => $this->integer()->notNull(),
-                'form_fk' => $this->integer()->notNull(),
+                'fieldFk' => $this->integer()->notNull(),
+                'formFk' => $this->integer()->notNull(),
             ]
         ));
 
@@ -81,8 +84,8 @@ class Install extends Migration
         $this->createTable(FormDataRecord::tableName(), array_merge(
             MigrationHelper::baseFields($this),
             [
-                'submission_fk' => $this->integer()->notNull(),
-                'form_field_fk' => $this->integer()->notNull(),
+                'submissionFk' => $this->integer()->notNull(),
+                'formFieldFk' => $this->integer()->notNull(),
                 'data' => $this->text()->notNull(),
             ]
         ));
@@ -91,8 +94,9 @@ class Install extends Migration
         $this->createTable(SubmissionRecord::tableName(), array_merge(
             MigrationHelper::baseFields($this),
             [
-                'form_fk' => $this->integer()->notNull(),
+                'formFk' => $this->integer()->notNull(),
                 'url' => $this->string()->notNull(),
+                'siteId' => $this->integer()->notNull(),
             ]
         ));
     }
@@ -116,6 +120,7 @@ class Install extends Migration
         );
     }
 
+    // Adds all foreign keys
     private function addForeignKeys()
     {
         // One submission belongs to a one form
@@ -160,5 +165,15 @@ class Install extends Migration
             FormRecord::tableName(),
             'id',
         );
+    }
+
+    // Delete all foreign keys
+    private function deleteForeignKeys()
+    {
+        CraftMigrationHelper::dropForeignKeyIfExists(SubmissionRecord::tableName(), 'form_fk');
+        CraftMigrationHelper::dropForeignKeyIfExists(FormDataRecord::tableName(), 'submission_fk');
+        CraftMigrationHelper::dropForeignKeyIfExists(FormDataRecord::tableName(), 'form_field_fk');
+        CraftMigrationHelper::dropForeignKeyIfExists(FormFieldRecord::tableName(), 'field_fk');
+        CraftMigrationHelper::dropForeignKeyIfExists(FormFieldRecord::tableName(), 'form_fk');
     }
 }

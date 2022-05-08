@@ -41,5 +41,11 @@
         "developer": "Dylan Kennedy, Jake Helfrich",
         "developerUrl": "https://github.com/zollf/form-house",
         "class": "formhouse\\formhouse\\FormHouse"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
     }
 }

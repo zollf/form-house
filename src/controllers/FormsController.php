@@ -11,6 +11,6 @@ class FormsController extends Controller
      */
     public function actionIndex()
     {
-        return $this->renderTemplate('form-house/forms/index');
+        return $this->renderTemplate('form-house/forms/_index');
     }
 }

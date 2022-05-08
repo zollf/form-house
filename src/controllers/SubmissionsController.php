@@ -11,6 +11,6 @@ class SubmissionsController extends Controller
      */
     public function actionIndex()
     {
-        return $this->renderTemplate('form-house/submissions/index');
+        return $this->renderTemplate('form-house/submissions/_index');
     }
 }

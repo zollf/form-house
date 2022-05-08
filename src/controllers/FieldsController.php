@@ -11,6 +11,6 @@ class FieldsController extends Controller
      */
     public function actionIndex()
     {
-        return $this->renderTemplate('form-house/fields/index');
+        return $this->renderTemplate('form-house/fields/_index');
     }
 }

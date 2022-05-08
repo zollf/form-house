@@ -4,7 +4,6 @@ namespace formhouse\formhouse\records;
 
 use craft\db\ActiveRecord;
 
-
 /**
  * FormDataRecord
  */
